@@ -7,7 +7,7 @@ ADD . /pneumokity/
 WORKDIR /pneumokity
 
 # Run pip install
-RUN pip install -r requirements.txt
+RUN pip install -r /pneumokity/requirements.txt
 
 # Set entry point
 ENTRYPOINT ["python", "pneumokity.py"]
