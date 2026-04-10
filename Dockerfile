@@ -5,13 +5,11 @@ FROM continuumio/miniconda3
 RUN conda config --add channels bioconda && \
     conda config --add channels conda-forge && \
     conda config --set channel_priority strict && \
-    conda create -n myenv python=3.9 numpy=1.22.0 pandas=1.3.3 mash sqlalchemy=1.4.22 -y && \
+    conda install python=3.9 numpy=1.22.0 pandas=1.3.3 mash sqlalchemy=1.4.22 -y && \
     conda clean -a
 
-
-
 # Activate the Conda environment for subsequent commands
-SHELL ["conda", "run", "-n", "myenv", "/bin/bash", "-c"]
+#SHELL ["conda", "run", "-n", "myenv", "/bin/bash", "-c"]
 
 # Set working directory inside the container
 WORKDIR /app
@@ -23,4 +21,4 @@ RUN mkdir -p /app/input /app/output
 COPY . /app/
 
 # Set entry point
-ENTRYPOINT ["conda", "run", "-n", "myenv", "python", "pneumokity.py"]
+ENTRYPOINT ["python", "pneumokity.py"]
