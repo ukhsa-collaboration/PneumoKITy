@@ -1,12 +1,8 @@
-# Use Miniconda as the base image
-FROM continuumio/miniconda3
+# Use python as the base image
+FROM python:3.9
 
-# Set up Conda channels for BioConda and Conda-Forge and create environment with specific versions
-RUN conda config --add channels bioconda && \
-    conda config --add channels conda-forge && \
-    conda config --set channel_priority strict && \
-    conda install python=3.9 numpy=1.22.0 pandas=1.3.3 mash sqlalchemy=1.4.22 -y && \
-    conda clean -a
+# Run pip install
+RUN pip install -r requirements.txt
 
 # Activate the Conda environment for subsequent commands
 #SHELL ["conda", "run", "-n", "myenv", "/bin/bash", "-c"]
@@ -15,7 +11,7 @@ RUN conda config --add channels bioconda && \
 WORKDIR /app
 
 # Make sure input/output directories exist
-RUN mkdir -p /app/input /app/output
+#RUN mkdir -p /app/input /app/output
 
 # Add pneumokity files to app
 COPY . /app/
