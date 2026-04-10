@@ -11,4 +11,4 @@ RUN pip install --upgrade pip && \
     pip install -r /pneumokity/requirements.txt
 
 # Set entry point
-ENTRYPOINT ["python", "pneumokity.py"]
+CMD ["python", "pneumokity.py"]
