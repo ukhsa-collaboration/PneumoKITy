@@ -7,7 +7,7 @@ Carmen Sheppard 2020-2022
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from database_tools.sqlalchemydeclarative import Base
+from pneumokity.database_tools.sqlalchemydeclarative import Base
 
 
 def session_maker(db_path):
