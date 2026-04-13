@@ -4,8 +4,8 @@ Carmen Sheppard 2019-2022
 """
 import sys
 import os
-import exceptions
-from run_scripts.tools import run_mash_screen, create_dataframe, \
+import pneumokity.exceptions
+from pneumokity.run_scripts.tools import run_mash_screen, create_dataframe, \
     apply_filters, create_csv, get_variant_ids
 
 
