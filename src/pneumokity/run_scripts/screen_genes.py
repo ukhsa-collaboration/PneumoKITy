@@ -8,6 +8,7 @@ import exceptions
 from run_scripts.tools import run_mash_screen, create_dataframe, \
     apply_filters, create_csv, get_variant_ids
 
+
 def sort_genes(gene, stage2_var_obj, allele_or_gene, session):
     """
     Main run script for allele/gene presence stage2_var_obj.
