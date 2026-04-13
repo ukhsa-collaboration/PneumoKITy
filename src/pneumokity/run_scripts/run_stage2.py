@@ -4,11 +4,11 @@ serotypes
 Carmen Sheppard 2019-2022
 """
 import sys
-from Database_tools.db_functions import session_maker
-from Database_tools.sqlalchemydeclarative import VariantGroup, Variants, Genes
-from run_scripts.screen_genes import sort_genes
-from run_scripts.tools import find_phenotype
-import exceptions
+from pneumokity.database_tools.db_functions import session_maker
+from pneumokity.database_tools.sqlalchemydeclarative import VariantGroup, Variants, Genes
+from pneumokity.run_scripts.screen_genes import sort_genes
+from pneumokity.run_scripts.tools import find_phenotype
+import pneumokity.exceptions
 
 
 def start_stage2(stage2_var_obj):

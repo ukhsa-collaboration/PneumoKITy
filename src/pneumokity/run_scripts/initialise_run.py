@@ -9,13 +9,13 @@ import argparse
 import glob
 import sys
 import os
-import ctvdb
+import pneumokity.ctvdb
 import pandas as pd
 from enum import Enum
-from run_scripts.tools import check_db_path, check_version
-from Database_tools.sqlalchemydeclarative import Serotype, Group
-from Database_tools.db_functions import session_maker
-from exceptions import CtvdbFileError
+from pneumokity.run_scripts.tools import check_db_path, check_version
+from pneumokity.database_tools.sqlalchemydeclarative import Serotype, Group
+from pneumokity.database_tools.db_functions import session_maker
+from pneumokity.exceptions import CtvdbFileError
 
 
 class Category(Enum):
