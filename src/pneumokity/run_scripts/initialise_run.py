@@ -11,6 +11,7 @@ import sys
 import os
 import pneumokity.ctvdb
 import pandas as pd
+from importlib import resources
 from enum import Enum
 from pneumokity.run_scripts.tools import check_db_path, check_version
 from pneumokity.database_tools.sqlalchemydeclarative import Serotype, Group
@@ -184,8 +185,7 @@ class Analysis:
 
         # set up path  to ctvdb if using default
         if not inputs.database:
-            self.database = os.path.dirname(ctvdb.__file__)
-
+            self.database = resources.files("pneumokity.ctvdb")
         else:
             # use given database folder
             self.database = inputs.database
