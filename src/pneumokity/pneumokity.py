@@ -17,22 +17,22 @@ from pneumokity.exceptions import CtvdbError
 version = "PneumoKITy V1.0.1"
 
 
-def main(input_args, workflow_version):
+def main():
     """
     Main function. Creates Analysis object containing parameters set up for
     the sample entered.    Creates directories for output and runs Stage 1.
     Runs stage2
     """
-
-    sys.stdout.write(f"\nRunning {workflow_version} for {args.run_type} serotype determination\n")
+    input_args = parse_args(version)
+    sys.stdout.write(f"\nRunning {version} for {input_args.run_type} serotype determination\n")
 
     # determine run type to set up object
-    if args.run_type == "pure":
+    if input_args.run_type == "pure":
         # set up analysis object using inputs from commandline
-        analysis = AnalysisPure(input_args, workflow_version)
+        analysis = AnalysisPure(input_args, version)
 
     else:
-        analysis = AnalysisMixed(input_args, workflow_version)
+        analysis = AnalysisMixed(input_args, version)
 
     sys.stdout.write(f"\nSample: {analysis.sampleid}\n")
 
@@ -114,6 +114,5 @@ def main(input_args, workflow_version):
     sys.exit(0)
 
 if __name__ == "__main__":
-    args = parse_args(version)
-    main(args, version)
+    main()
 
