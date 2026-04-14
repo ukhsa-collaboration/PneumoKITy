@@ -7,8 +7,9 @@ ADD . /pneumokity/
 WORKDIR /pneumokity
 
 # Run pip install
-RUN pip install --upgrade pip && \
-    pip install -r /pneumokity/requirements.txt
+RUN conda install bioconda::mash && \
+    pip install --upgrade pip && \
+    pip install .
 
 # Set entry point
-CMD ["python", "pneumokity.py"]
+CMD ["pneumokity"]
