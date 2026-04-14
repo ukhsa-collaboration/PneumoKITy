@@ -1,0 +1,54 @@
+[project] # Update all fields in this section
+name = "pneumokity"  # Change this to your package - it must match module name in src
+version = "1.0.1"
+description = "Fork of PneumoKITy - Fast sensitive Pneumococcal Capsular Serotype screening from WGS data"
+authors = [{name = "Author name", email = "email.address@example.com"}]
+requires-python = ">=3.7"
+dependencies = ["numpy==1.22.0", "pandas==1.3.3", "SQLAlchemy==1.4.22"]
+
+[tool.setuptools.dynamic]
+version = {attr = "pneumokity.__version__"} # Add package name here to get version
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"pneumokity.ctvdb" = ["*.db", "*.fasta", "*.fa", "*.msh"]
+
+[project.optional-dependencies] # Dependencies for developers only - add more if required
+dev = ["ruff", "pytest", "pre-commit"]
+
+[build-system] # Leave this section
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project.scripts] # Update with main repo script here
+pneumokity = "pneumokity.pneumokity:main"
+
+[tool.ruff.lint] # Lint rules to follow - add or delete if required
+select = [
+    # pycodestyle
+    "E",
+    # Pyflakes
+    "F",
+    # pyupgrade
+    "UP",
+    # flake8-bugbear
+    "B",
+    # flake8-simplify
+    "SIM",
+    # isort
+    "I",
+    # comprehesnions
+    "C4",
+    # pathlib
+    "PTH",
+]
+
+ignore = ["E501"] # Lint rules to ignore - add or remove as required
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.format]
+quote-style = "double"
