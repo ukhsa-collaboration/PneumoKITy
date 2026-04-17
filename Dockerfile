@@ -1,5 +1,5 @@
 # Use python as the base image
-FROM python:3.9
+FROM continuumio/miniconda3
 
 ADD . /pneumokity/
 
@@ -7,8 +7,13 @@ ADD . /pneumokity/
 WORKDIR /pneumokity
 
 # Run pip install
-RUN pip install --upgrade pip && \
-    pip install -r /pneumokity/requirements.txt
+RUN conda config --add channels bioconda && \
+    conda config --add channels conda-forge && \
+    conda config --set channel_priority strict && \
+    conda install python=3.9 && \
+    conda install bioconda::mash && \
+    pip install --upgrade pip && \
+    pip install .
 
 # Set entry point
-CMD ["python", "pneumokity.py"]
+CMD ["pneumokity"]

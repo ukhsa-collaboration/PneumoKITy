@@ -7,8 +7,8 @@ import numpy as np
 import subprocess
 import os
 import sys
-from exceptions import CtvdbError, CtvdbFileError
-from Database_tools.sqlalchemydeclarative import Genes, Variants, Serotype, SerotypeVariants, VariantGroup
+from pneumokity.exceptions import CtvdbError, CtvdbFileError
+from pneumokity.database_tools.sqlalchemydeclarative import Genes, Variants, Serotype, SerotypeVariants, VariantGroup
 
 
 def check_db_path(database):
@@ -311,8 +311,8 @@ def collate_results(collate_dir, results):
         sys.exit(1)
 
 def handle_results(analysis):
+    from pneumokity.run_scripts.initialise_run import Category
 
-    from run_scripts.initialise_run import Category
     quality, results = analysis.create_objdf()
     # write csv
     create_csv(quality, analysis.output_dir, f"{analysis.sampleid}_quality_system_data.csv")
